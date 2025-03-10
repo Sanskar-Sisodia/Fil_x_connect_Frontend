@@ -104,13 +104,14 @@ export default function HomePage() {
       const activeConnections = connections.filter((user: any) => user.status !== "0");
 
       const allPosts = await Promise.all(
-        activeConnections.map(async (conn) => {
-          const userDetails = await apiRequest(`users/${conn.id}`, 'GET');
-          if (userDetails.status === 0) return null;
-          const userPosts = await apiRequest(`posts/user/${conn.id}`, 'GET') || [];
-          return userPosts.filter((post: any) => post.status === "1");
-        })
-      );
+  activeConnections.map(async (conn: { id: string; status: number }) => {
+    const userDetails = await apiRequest(`users/${conn.id}`, 'GET');
+    if (userDetails.status === 0) return null;
+
+    const userPosts = await apiRequest(`posts/user/${conn.id}`, 'GET') || [];
+    return userPosts.filter((post: any) => post.status === "1");
+  })
+);
 
       const enrichedPosts = (allPosts.flat().filter(Boolean) as Post[]).map((post) => ({
         ...post,
