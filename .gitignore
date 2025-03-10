@@ -6,3 +6,8 @@ node_modules/
 out/
 .cache/
 dist/
+node_modules/
+.next/
+out/
+.cache/
+dist/
