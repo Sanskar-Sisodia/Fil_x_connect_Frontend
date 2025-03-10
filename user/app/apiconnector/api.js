@@ -1,4 +1,4 @@
-const BASE_URL = 'http://3.108.56.177:8080';
+const BASE_URL = 'http://43.205.229.123:8080'; // Replace with your backend's public IP
 export async function apiRequest(endPoint, method, body) {
   const url = `${BASE_URL}/${endPoint}`;
   const response = await fetch(url, {
