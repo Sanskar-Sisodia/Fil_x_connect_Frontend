@@ -9,7 +9,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://52.66.8.192:8080/:path*", // Proxy to avoid Mixed Content issue
+        destination: "http://52.66.8.192:8080/api", // Proxy to avoid Mixed Content issue
       },
     ];
   },
